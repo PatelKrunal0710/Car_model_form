@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<label>Name</label>
+<input type="text" value="{{pi.Name}}">
+<label>Brand</label>
+<input type="text" value="{{pi.Brand}}"></br></br>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table border="1">
+            <tr>
+                <th>Sr.#</th>
+                <th>Model List</th>
+                <th>Status</th>
+                <th>comments</th>
+            </tr>
+            {% for i in chklist %}
+            <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.chk_item}}</td>
+                <td>
+                    <select name="dd_{{i.id}}" id="dd_{{i.id}}" required>
+                        <option value=""></option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                </select>
+            </td>
+            <td> <textarea id="text_{{i.id}}" name="text_{{i.id}}"></textarea> </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <button>Submit</button>
+    </form>    
+</body>
+</html>
